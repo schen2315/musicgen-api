@@ -61,8 +61,21 @@ def make_music(model=MODELS[0],
             i += 1
 
 if __name__ == "__main__":
-    make_music(model=MODELS[0],
-               text='modern upbeat eletronic lofi beats',
-               duration=10,
-               outfile_name='output',
-               sample_rate=48000)
+    # make_music(model=MODELS[0],
+    #            text='modern upbeat eletronic lofi beats',
+    #            duration=10,
+    #            outfile_name='output',
+    #            sample_rate=48000)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--model', type=str, default=MODELS[0])
+    parser.add_argument('--text', type=str, default='modern upbeat eletronic lofi beats')
+    parser.add_argument('--duration', type=int, default=10)
+    parser.add_argument('--sample_rate', type=int, default=48000)
+    parser.add_argument('--outfile_name', type=str, default='output')
+
+    args = parser.parse_args()
+    make_music(model=args.model,
+               text=args.text,
+               duration=args.duration,
+               outfile_name=args.outfile_name,
+               sample_rate=args.sample_rate)
