@@ -13,7 +13,7 @@ USE_DIFFUSION_DECODER = True
 if USE_DIFFUSION_DECODER:
     mbd = MultiBandDiffusion.get_mbd_musicgen()
 
-MODELS = ['facebook/musicgen-melody', 'facebook/musicgen-small']
+MODELS = ['facebook/musicgen-small', 'facebook/musicgen-melody']
 
 def make_music(model=MODELS[0], 
                text='modern upbeat eletronic lofi beats',
