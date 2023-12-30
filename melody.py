@@ -15,26 +15,6 @@ if USE_DIFFUSION_DECODER:
 
 MODELS = ['facebook/musicgen-melody', 'facebook/musicgen-small']
 
-# model = MusicGen.get_pretrained('facebook/musicgen-melody')
-# model.set_generation_params(duration=8)
-
-# output = model.generate(
-#     descriptions=[
-#         'modern upbeat eletronic lofi beats'
-#     ],
-#     progress=True, return_tokens=True
-# )
-# if USE_DIFFUSION_DECODER:
-#     out_diffusion = mbd.tokens_to_wav(output[1])
-#     outputs = torch.cat([output[0], out_diffusion], dim=0)
-#     outputs = outputs.detach().cpu().float()
-#     for out in outputs:
-#         i = 1
-#         with open(f"./example-{i}.wav", "wb") as f:
-#            audio_write(f"./example-{i}.wav", out, 32000, strategy="loudness",
-#                 loudness_headroom_db=16, loudness_compressor=True, add_suffix=False)
-#         i += 1
-
 def make_music(model=MODELS[0], 
                text='modern upbeat eletronic lofi beats',
                duration=10,
@@ -61,11 +41,6 @@ def make_music(model=MODELS[0],
             i += 1
 
 if __name__ == "__main__":
-    # make_music(model=MODELS[0],
-    #            text='modern upbeat eletronic lofi beats',
-    #            duration=10,
-    #            outfile_name='output',
-    #            sample_rate=48000)
     parser = argparse.ArgumentParser()
     parser.add_argument('--model', type=str, default=MODELS[0])
     parser.add_argument('--text', type=str, default='modern upbeat eletronic lofi beats')
@@ -79,3 +54,4 @@ if __name__ == "__main__":
                duration=args.duration,
                outfile_name=args.outfile_name,
                sample_rate=args.sample_rate)
+
