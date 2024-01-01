@@ -29,5 +29,5 @@ app.get('/api/musicgen', async (req, res) => {
   res.send(`/music/${new_riff}.wav`)
 });
 
-PORT = process.env.port || 8000
+PORT = process.env.port || 80
 app.listen(PORT, () => console.log(`Listening on PORT=${PORT}`))
