@@ -4,6 +4,7 @@ const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 const cors = require('cors');
 const uuidv4 = require('uuid').v4;
+const morgan = require('morgan');
 
 async function makeMusic(text) {
   const name = uuidv4();
@@ -13,7 +14,13 @@ async function makeMusic(text) {
   //const { stdout, stderr } = await exec(command)
 }
 
+app.use(morgan('tiny'))
 app.use(cors())
+
+app.get('/test', (req, res) => {
+  res.send('youre test passed!')
+})
+
 app.use('/music', express.static('outputs'))
 
 app.get('/api/musicgen', async (req, res) => {
